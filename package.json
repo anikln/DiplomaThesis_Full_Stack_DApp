@@ -1,0 +1,24 @@
+{
+  "name": "dapp",
+  "version": "1.0.0",
+  "description": "A Full Stack DApp developed for my thesis, that serves as a notarization service for data retrieved from a biomedical database",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "stop": "pkill -f node"
+  },
+  "author": "Athina Styliani Kleinaki",
+  "license": "ISC",
+  "devDependencies": {
+    "truffle-contract": "^1.1.11",
+    "web3": "^0.20.0"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "js-sha256": "^0.9.0",
+    "mongodb": "^3.1.0-beta4",
+    "nodemon": "^1.14.12"
+  }
+}

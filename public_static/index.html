@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blockchain Query Notary Service</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href="stylesheets/app.css" rel="stylesheet">
+</head>
+<body>
+  <h1 >Blockchain Query Notary Service</h1>
+  <div id="left" style="float:left" style="text-align:center">
+  <h2>Select Repository</h2>
+  <div>
+  <select id="mySelect"><option value="PubMed">PubMed MEDLINE Database</option><option value="MedCarre">CARRE Risk Factor Repository</option></select>
+  </div>
+  <br>
+  <h2 style="cursor: context-menu"title="Create an Enhanced Scheme contract to support your query. Extends the functionalities of the Basic contract as it supports versioning of responses ">Contract for the Versioning Scheme</h2>
+  <br><span style="font-size:15px">For more information see this <a href="../DiplomaThesis.pdf" target="_blank" title="More information about the application in Chapter3 of the Diploma thesis">this</a> paper</p></span>
+  <div id="userinput">
+  <input type="text" id="inputquery" placeholder="put query here" />
+  <a href="#" onclick="addValue()" class="btn btn-primary">Submit</a>
+  <div id="answerfromserver"></div>
+  <div id="answerr">Answer from server:<br><span id="displayanswer"></span></div>
+  </div></p>
+  <br>
+  <h2 style="cursor: context-menu" title="Create a Basic Scheme contract to support your query ">Contract for the Basic Scheme</h2>
+  <br><span style="font-size:15px">If you want a Personal Contract for your query insert your question in the box below.
+  For more information see this <a href="../DiplomaThesis.pdf" target="_blank" title="More information about the application in Chapter3 of the Diploma thesis">this</a> paper</p></span>
+  <br><input type="text" id="testprivatequery" placeholder="put query here" />
+  <a href="#" onclick="addValuetestprivate()" class="btn btn-primary">Submit</a>
+  <div id="testaddValuePrivate">
+  <div id="msgaddress"></div>
+  <div id="transactionprivate"></div>
+  <div id="answerr2">Answer from server:<br><span id="displayanswer2"></span></div>
+  </div>
+  <div id="Infotable" style="font-size:15px">
+    <table>
+          <tr><td id="s" style="text-align:center">Contract Type</td><td id="ss" style="text-align:center">Abi. It can be used for personal validation by the user</td></tr>
+          <tr><td id="s" style="text-align:center">Personal</td> <td id="ss" style="background-color:white">[{"inputs": [{"name": "_hashValue","type": "bytes32"}],"payable": false,"stateMutability": "nonpayable","type": "constructor"},{"constant": true,"inputs": [],"name": "getdata","outputs": [{"name": "_data","type": "bytes32"}],"payable": false,"stateMutability": "view","type": "function"}]</td></tr>
+          <tr><td id="s" style="text-align:center">General</td><td id="ss" style="background-color:white">[{"constant": false,"inputs": [{"name": "_queryhash","type": "bytes32"},{"name": "_answerhash","type": "bytes32"},{"name": "_timekey","type": "uint256"}],"name": "addValue","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"},{"constant": true,"inputs": [{"name": "_queryhash","type": "bytes32"}],"name": "returnLatest","outputs": [{"name": "","type": "bytes32"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_queryhash","type": "bytes32"},{"name": "_answerhash","type": "bytes32"}],"name": "returntime","outputs": [{"name": "_from","type": "uint256"},{"name": "_since","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_queryhash","type": "bytes32"},{"name": "_cursor","type": "uint256"},{"name": "_amount","type": "uint256"}],"name": "getAll","outputs": [{"name": "values","type": "bytes32[]"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_queryhash","type": "bytes32"}],"name": "getLength","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"},{"constant": true,"inputs": [{"name": "_queryhash","type": "bytes32"}],"name": "getTimekey","outputs": [{"name": "","type": "uint256"}],"payable": false,"stateMutability": "view","type": "function"}]</td></tr>
+    </table>
+    <p>The address of the general contract is:AFTER DEPLOYMENT</p>
+  </div>
+  </div>
+  <div id="right" style="float:right" style="text-align:center">
+  <h2 style="font-size:22px"><u>Validation based on smart contract's data</u></h2>
+  <div style=" border-style:double; padding: 1em;"><h2 style="font-size:20px">Provides validation for a query supported by an Versioning Scheme contract</h2>
+  <h2 style="font-size:17px">Return the hash value of the latest answer to a specific query</h2>
+  <div id="returnLatest">
+  <input type="text" id="querylatest" placeholder="put query here"/>
+  <a href="#" onclick="returnLatest()" class="btn btn-primary">Submit</a>
+  <div id="latestanswer"></div>
+  </div>
+  <h2 style="font-size:17px">Return the time values for a specific answer to a query</h2>
+  <div id="returnTime">
+  <input type="text" id="querytime" placeholder="put query here" />
+  <br><input type="text" id="answertime" placeholder="put the hash of the query here" />
+  <a href="#" onclick="returnTime()" class="btn btn-primary">Submit</a></br>
+  <div id="timeinserted"></div>
+  <div id="timeinserted2"></div>
+  </div>
+  <h2 style="font-size:17px">Return the hash values of every answer to a specific query</h2>
+  <div id="returnAll">
+  <input type="text" id="queryall" placeholder="put query here"/>
+  <a href="#" onclick="getAll()" class="btn btn-primary">Submit</a>
+  <div id="answerr3">Values: <br><span id="displayanswer3"></span></div>
+  </div>
+  </div>
+  <br>
+  <div style=" border-style:double; padding: 1em;">
+  <h2 style="font-size:20px">Provides validation for a query supported by a Basic Scheme contract</h2>
+  <h2 style="font-size:17px">Return the hash value stored in a contract</h2>
+  <div id="testdataValuePrivate">
+  <input type="text" id="testprivateaddress" placeholder="put address here" />
+  <a href="#" onclick="Valuetestprivate()" class="btn btn-primary">Submit</a>
+  <div id="msgdata"></div>
+  </div>
+  </div>
+    <p style="font-size:15px">Information about this demo app can be found here <a href="https://euclid.ee.duth.gr/demos/notary/" target="_blank">Notary Demo</a> and examples of how to use it here: <a href="https://youtu.be/qVvQur6RO7E" target="_blank">Basic Scheme</a>, <a href="https://youtu.be/-7-H13NQdLo" target="_blank">Enhanced Scheme</a></p>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="javascript/app.js"></script>
+</html>
+
