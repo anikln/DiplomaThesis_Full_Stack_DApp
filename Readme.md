@@ -13,6 +13,10 @@
   <img src="ArchitectureSchemeOfTheDApp.jpg" width="70%" height="70%">
 </p>
 
+## Demostration of the DApp
+
+More information about the DApp and video examples of its function can be found in the website <a href="https://euclid.ee.duth.gr/demos/notary/" target="_blank">here</a>, which belongs to the lab of Democritus University where i had studied .
+
 ## The tools and the technologies used
 
 The tools and technologies used for the development of the DApp are:
